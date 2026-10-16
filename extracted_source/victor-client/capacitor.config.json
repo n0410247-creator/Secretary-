@@ -1,0 +1,7 @@
+{
+  "appId": "ai.victor.secretary",
+  "appName": "VICTOR AI",
+  "webDir": "www",
+  "android": { "allowMixedContent": false, "backgroundColor": "#090b0f" },
+  "server": { "androidScheme": "https", "cleartext": false }
+}

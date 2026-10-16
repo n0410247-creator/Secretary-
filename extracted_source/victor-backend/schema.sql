@@ -1,0 +1,12 @@
+PRAGMA foreign_keys=ON;
+CREATE TABLE IF NOT EXISTS settings (id INTEGER PRIMARY KEY CHECK(id=1), value_json TEXT NOT NULL, updated_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS secrets (name TEXT PRIMARY KEY, ciphertext TEXT NOT NULL, updated_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS messages (id INTEGER PRIMARY KEY AUTOINCREMENT, direction TEXT NOT NULL, external_id TEXT, contact TEXT, text TEXT NOT NULL, provider TEXT, model TEXT, status TEXT, created_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS contacts (id INTEGER PRIMARY KEY AUTOINCREMENT, wa_id TEXT UNIQUE, name TEXT, created_at TEXT NOT NULL, updated_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS calls (id INTEGER PRIMARY KEY AUTOINCREMENT, wa_call_id TEXT UNIQUE, contact TEXT, status TEXT NOT NULL, recording_id INTEGER, created_at TEXT NOT NULL, updated_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS recordings (id INTEGER PRIMARY KEY AUTOINCREMENT, kind TEXT NOT NULL, mime_type TEXT NOT NULL, path TEXT NOT NULL, bytes INTEGER NOT NULL, duration_seconds REAL, transcript TEXT, summary TEXT, expires_at TEXT, created_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS activity (id INTEGER PRIMARY KEY AUTOINCREMENT, kind TEXT NOT NULL, detail_json TEXT NOT NULL, created_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS reports (day TEXT PRIMARY KEY, report_json TEXT NOT NULL, created_at TEXT NOT NULL);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_messages_external_id ON messages(external_id) WHERE external_id IS NOT NULL;
+CREATE INDEX IF NOT EXISTS idx_activity_created ON activity(created_at);
+CREATE INDEX IF NOT EXISTS idx_recordings_created ON recordings(created_at);

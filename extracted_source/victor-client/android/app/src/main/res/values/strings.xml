@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">VICTOR AI</string>
+    <string name="title_activity_main">VICTOR AI</string>
+    <string name="package_name">ai.victor.secretary</string>
+    <string name="custom_url_scheme">ai.victor.secretary</string>
+</resources>

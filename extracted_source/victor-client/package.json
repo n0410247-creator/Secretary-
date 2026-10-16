@@ -1,0 +1,16 @@
+{
+  "name": "victor-ai-client",
+  "private": true,
+  "version": "1.0.1",
+  "scripts": {
+    "copy-web": "rm -rf www && cp -R ../apk-extracted/assets/public www"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/core": "^7.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.0.0",
+    "typescript": "^7.0.2"
+  }
+}
